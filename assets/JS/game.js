@@ -1,13 +1,48 @@
+
+var timeLeft = 60;
+var timer = document.getElementById("timeStamp");
+// timer 
+function gameTimer() {
+
+    var i = 0;
+
+    var timer = document.getElementById("timeStamp");
+
+    var timerInterval = setInterval(function () {
+        timeLeft--;
+        timer.textContent = "Time: " + timeLeft;
+
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
+            alert("GAME OVER!!!!");
+            // questionEnder();
+        }
+
+        else if (i === availableQuestions.length) {
+            clearInterval(timerInterval);
+        }
+    }, 1000)
+
+    return (score)
+}
+
+gameTimer()
+
+
+
+
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
-
+const progressText = document.getElementById("progressText");
+const scoreText = document.getElementById("score");
+const progressBarFull = document.getElementById("progressBarFull");
 let currentQuestion = {};
 let acceptingAnswers = false;
-let score = 0;
+var score = 0;
 let questionCounter = 0;
-let availableQuestions = [];
-
-let questions = [
+var availableQuestions = [];
+// js questions
+var questions = [
     {
         question: "A boolean represents a what?",
         choice1: "data-type",
@@ -31,29 +66,49 @@ let questions = [
         choice3: "<javascript>",
         choice4: "<script>",
         answer: 4
+    },
+    {
+        question: "What method adds a new item to the end of an array? ",
+        choice1: "pop()",
+        choice2: "toString()",
+        choice3: "push()",
+        choice4: "splice()",
+        answer: 3
+    },
+    {
+        question: "a functions name is followed by what in JavaScript?",
+        choice1: "()",
+        choice2: "{}",
+        choice3: "[]",
+        choice4: ";",
+        answer: 1
     }
-
 
 
 ];
 
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 3;
-
+const MAX_QUESTIONS = 5;
+// array iteration  
 startGame = () => {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
-    console.log(availableQuestions);
+
     getNewQuestion();
 
 
 };
 getNewQuestion = () => {
     if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
-        return window.location.assign('/end.html');
+        localStorage.setItem('mostRecentScore', score);
+        return window.location.assign('end.html');
     }
     questionCounter++;
+    progressText.innerText = "Question" + questionCounter + "/" + MAX_QUESTIONS;
+    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+
+
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
     question.innerText = currentQuestion.question;
@@ -68,19 +123,44 @@ getNewQuestion = () => {
     acceptingAnswers = true;
 };
 
+// correct and incorrect payouts 
+
 choices.forEach(choice => {
     choice.addEventListener("click", e => {
         if (!acceptingAnswers) return;
         acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["number"];
-        console.log(selectedAnswer);
-        getNewQuestion();
 
+        const classToApply =
+            selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+        if (classToApply === "correct") {
+            incrementScore(CORRECT_BONUS);
+        }
+        if (classToApply === "incorrect") {
+            timeLeft -= 10;
+
+        }
+        // // if (selectedAnswer != currentQuestion.answer) {
+        // // secondsLeft - 10;
+        // // }
+
+
+        selectedChoice.parentElement.classList.add(classToApply);
+
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(classToApply);
+            getNewQuestion();
+        }, 1000);
     });
 });
-startGame();
 
+incrementScore = num => {
+    score += num;
+    scoreText.innerText = score;
+}
+
+startGame();
 
 
 

@@ -4,35 +4,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Quiz - Play</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="game.css" />
+    <title>JS Quiz - Play</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/CSS/app.css" />
+    <link rel="stylesheet" href="./assets/CSS/game.css" />
 </head>
 
 <body>
-    <div class="container">
-        <div id="game" class="justify-center felx column">
-            <h2 id="question">What is the answer to this question?</h2>
-            <div class="choice-container">
-                <p class="choice-prefix">A</p>
-                <p class="choice-text" data-number="1">Choice 1</p>
-            </div>
-            <div class="choice-container">
+    <!-- nav bar -->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" id="highLink" href='highscores.html'>HighScores</a>
 
-                <p class="choice-prefix">B</p>
-                <p class="choice-text" data-number="2">Choice 2</p>
             </div>
-            <div class="choice-container">
-                <p class="choice-prefix">C</p>
-                <p class="choice-text" data-number="3">Choice 3</p>
-            </div>
-            <div class="choice-container">
-                <p class="choice-prefix">D</p>
-                <p class="choice-text" data-number="4">Choice 4</p>
+            <div class="nav navbar-nav navbar-right" id="timeStamp">Time: 0</div>
+        </div>
+    </nav>
+    <div class="container">
+        <!-- <div class="row"> -->
+        <!-- <div class="col-sm-12"></div> -->
+        <!-- </div> -->
+        <div class="row">
+            <div class="col-sm-12">
+
+                <!-- progress bar -->
+                <!-- <div class="col-sm-4"> -->
+                <div id="game" class="justify-center felx column">
+                    <div id="hud">
+                        <div id="hud-item">
+                            <p id="progressText" class="hud-prefix">
+                                Question
+                            </p>
+                            <div id="progressBar">
+                                <div id="progressBarFull"></div>
+                            </div>
+                        </div>
+
+
+                        <!-- <h1 class="hud-main-text" id="questionCounter"> -->
+
+                        <!-- </h1> -->
+                        <!-- score dispaly -->
+                        <div id="hud-item">
+                            <p class="hud-prefix">
+                                Score
+                            </p>
+                            <h1 class="hud-main-text" id="score">
+                                0
+                            </h1>
+                        </div>
+                    </div>
+                    <!-- question array -->
+                    <h2 id="question">What is the answer to this question?</h2>
+                    <div class="choice-container">
+                        <p class="choice-prefix">A</p>
+                        <p class="choice-text" data-number="1">Choice 1</p>
+                    </div>
+                    <div class="choice-container">
+
+                        <p class="choice-prefix">B</p>
+                        <p class="choice-text" data-number="2">Choice 2</p>
+                    </div>
+                    <div class="choice-container">
+                        <p class="choice-prefix">C</p>
+                        <p class="choice-text" data-number="3">Choice 3</p>
+                    </div>
+                    <div class="choice-container">
+                        <p class="choice-prefix">D</p>
+                        <p class="choice-text" data-number="4">Choice 4</p>
+                    </div>
+                </div>
+
+                <!-- </div> -->
+                <!-- <div class="col-sm-4"></div> -->
             </div>
         </div>
     </div>
-    <script src="game.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="./assets/JS/game.js"></script>
 </body>
 
 

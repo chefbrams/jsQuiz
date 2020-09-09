@@ -1,3 +1,5 @@
+
+/* question choices */
 .choice-container {
     display:flex;
     margin-bottom: 0.5rem;
@@ -23,3 +25,49 @@ color: white;
      padding: 1.5rem;
      width: 100%;
  }
+
+
+
+ 
+ .correct {
+     background-color: green;
+ }
+
+ .incorrect{
+     background-color: red;
+ }
+ /* hud */
+
+ #hud {
+     display: flex;
+     justify-content: space-around;
+ }
+
+ .hud-prefix {
+     text-align: center;
+     font-size: 2rem;
+ }
+
+ .hud-main-text {
+     text-align: center;
+ }
+ #progressBar {
+     width: 20rem;
+     height: 4rem;
+     border: 0.3rem solid purple;
+     margin-top: 1.5rem;
+ }
+ #progressBarFull {
+     height: 3.4rem;
+     background-color: purple;
+     width: 0%;
+ }
+/* navbar */
+ #highLink{
+    font-size: 2rem; 
+    color: purple;
+}
+
+#timeStamp {
+    font-size: 2rem;
+}
