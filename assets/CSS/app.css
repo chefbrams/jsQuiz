@@ -118,6 +118,10 @@ input{
     box-shadow: 0 0.1rem 1.4rem 0 0.5 purple;
 }
 
-iput::placeholder {
-    color: lightgrey;
+input::placeholder {
+    color: purple;
+    background-color: aliceblue;
+    
 }
+
+
